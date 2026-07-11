@@ -17,3 +17,5 @@ chromadb
 google-generativeai
 httpx
 beautifulsoup4
+python-docx
+reportlab
