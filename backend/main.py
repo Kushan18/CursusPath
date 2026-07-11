@@ -13,11 +13,16 @@ app = FastAPI(title="CursusPath API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173", "http://192.168.1.106:5173"],
+    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origin_regex="https://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.get("/")
+def read_root():
+    return {"status": "online", "message": "CursusPath API is running. Go to /docs for Swagger documentation."}
 
 app.include_router(offers_router)
 app.include_router(resumes_router)
